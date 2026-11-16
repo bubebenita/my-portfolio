@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react"
 import { useEffect, useState } from 'react'
 import { motion, useReducedMotion } from 'motion/react'
 import {
@@ -578,6 +579,7 @@ useEffect(() => {
           <span>MADE WITH INTENTION · © 2026</span>
 
           <a href="#home">BACK TO TOP ↑</a>
+            <Analytics />  
         </div>
       </footer>
     </main>
