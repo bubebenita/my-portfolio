@@ -326,7 +326,9 @@ useEffect(() => {
       {/* PROJECTS */}
       <section className="work-section" id="work">
         <div className="section-heading">
-          <span className="heading-decoration">✳</span>
+          <span className="heading-decoration">
+  <Asterisk size={32} strokeWidth={1.5} />
+</span>
           <h2>
             Things I've
             <br />
