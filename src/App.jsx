@@ -552,7 +552,7 @@ useEffect(() => {
   </div>
 
   <span className="certificate-view">
-    VIEW CERTIFICATE ↗
+    VIEW CERTIFICATE <ArrowUpRight size={9} />
   </span>
 </a>
 
@@ -599,7 +599,7 @@ useEffect(() => {
               target="_blank"
               rel="noreferrer"
             >
-              GitHub ↗
+              GitHub <ArrowUpRight size={12} />
             </a>
 
             <a
@@ -607,11 +607,11 @@ useEffect(() => {
               target="_blank"
               rel="noreferrer"
             >
-              LinkedIn ↗
+              LinkedIn <ArrowUpRight size={12} />
             </a>
 
             <a href="mailto:chidiebube858@gmail.com">
-              Email ↗
+              Email <ArrowUpRight size={12} />
             </a>
           </div>
 
