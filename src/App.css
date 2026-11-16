@@ -884,12 +884,11 @@ section {
   }
 
   .hero {
-    min-height: auto;
-    grid-template-columns: 1fr;
-    padding: 65px 6% 75px;
-    gap: 35px;
-  }
-
+  min-height: auto;
+  grid-template-columns: 1fr;
+  padding: 35px 6% 65px;
+  gap: 25px;
+}
   .hero-intro {
     font-size: 11px;
   }
@@ -908,25 +907,25 @@ section {
   }
 
   .portrait-composition {
-    width: 90%;
-    min-height: 430px;
-    margin: 0 auto;
-  }
+  order: -1;
+  width: 85%;
+  min-height: 380px;
+  margin: 0 auto;
+}
 
   .portrait-frame {
-    width: 83%;
-    height: 390px;
-  }
+  width: 83%;
+  height: 350px;
+}
 
   .portrait-decoration {
-    right: -3%;
-  }
-
+  right: -3%;
+}
   .portrait-caption {
-    bottom: 0;
-    left: -2%;
-    font-size: 12px;
-  }
+  bottom: 0;
+  left: -2%;
+  font-size: 11px;
+}
 
   .hero-decoration {
     display: none;
@@ -1869,4 +1868,77 @@ body,
   background: #465B49;
   color: #EAF0E5;
   border-color: #465B49;
+}
+/* MOBILE NAVIGATION FIX */
+.mobile-menu-toggle {
+  display: none;
+}
+
+@media (max-width: 650px) {
+  .site-header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    padding: 15px 6%;
+    min-height: 75px;
+    z-index: 100;
+  }
+
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .logo span {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .mobile-menu-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    padding: 8px;
+    color: var(--ink);
+    cursor: pointer;
+  }
+
+  .navigation {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 15px 6% 25px;
+    background: var(--cream);
+    border-bottom: 2px solid var(--ink);
+    z-index: 100;
+  }
+
+  .navigation.navigation-open {
+    display: flex;
+  }
+
+  .navigation > a {
+    padding: 14px 0;
+  }
+
+  .navigation .nav-contact {
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  .navigation .theme-toggle {
+    align-self: flex-start;
+    margin-top: 18px;
+  }
 }

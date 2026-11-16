@@ -6,6 +6,8 @@ import {
   ArrowDown,
   MoveUpRight,
   Asterisk,
+  Menu,
+  X,
 } from 'lucide-react'
 import './App.css'
 
@@ -155,6 +157,7 @@ function App() {
 const [isDarkMode, setIsDarkMode] = useState(() => {
   return localStorage.getItem('portfolio-theme') === 'dark'
 })
+const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
 useEffect(() => {
   const theme = isDarkMode ? 'dark' : 'light'
@@ -181,39 +184,73 @@ useEffect(() => {
   return (
     <main>
       {/* NAVIGATION */}
-      <header className="site-header">
-        <a href="#home" className="logo">
-          CHIDI<span>✳</span>
-        </a>
-
-        <nav className="navigation" aria-label="Main navigation">
-  <a href="#work">Work</a>
-  <a href="#about">About</a>
-  <a href="#experience">Experience</a>
-  <a href="#skills">Skills</a>
-  <a href="#contact" className="nav-contact">
-    Let's talk <ArrowUpRight size={17} />
+      {/* NAVIGATION */}
+<header className="site-header">
+  <a
+    href="#home"
+    className="logo"
+    onClick={() => setIsMobileMenuOpen(false)}
+  >
+    CHIDI<span><Asterisk size={20} /></span>
   </a>
+
   <button
-  type="button"
-  className={`theme-toggle ${isDarkMode ? 'active' : ''}`}
-  role="switch"
-  aria-checked={isDarkMode}
-  aria-label="Toggle dark mode"
-  onClick={() => setIsDarkMode((current) => !current)}
->
-  <span className="theme-toggle-label">DARK MODE</span>
+    type="button"
+    className="mobile-menu-toggle"
+    aria-label={isMobileMenuOpen ? "Close navigation" : "Open navigation"}
+    aria-expanded={isMobileMenuOpen}
+    aria-controls="main-navigation"
+    onClick={() => setIsMobileMenuOpen((current) => !current)}
+  >
+    {isMobileMenuOpen ? <X size={25} /> : <Menu size={25} />}
+  </button>
 
-  <span className="theme-toggle-track">
-    <span className="theme-toggle-thumb" />
-  </span>
+  <nav
+    id="main-navigation"
+    className={`navigation ${isMobileMenuOpen ? "navigation-open" : ""}`}
+    aria-label="Main navigation"
+  >
+    {[
+      ["Work", "#work"],
+      ["About", "#about"],
+      ["Experience", "#experience"],
+      ["Skills", "#skills"],
+    ].map(([label, href]) => (
+      <a
+        key={label}
+        href={href}
+        onClick={() => setIsMobileMenuOpen(false)}
+      >
+        {label}
+      </a>
+    ))}
 
-  <span className="theme-toggle-status">
-    {isDarkMode ? 'ON' : 'OFF'}
-  </span>
-</button>
-</nav>
-      </header>
+    <a
+      href="#contact"
+      className="nav-contact"
+      onClick={() => setIsMobileMenuOpen(false)}
+    >
+      Let's talk <ArrowUpRight size={17} />
+    </a>
+
+    <button
+      type="button"
+      className={`theme-toggle ${isDarkMode ? "active" : ""}`}
+      role="switch"
+      aria-checked={isDarkMode}
+      aria-label="Toggle dark mode"
+      onClick={() => setIsDarkMode((current) => !current)}
+    >
+      <span className="theme-toggle-label">DARK MODE</span>
+      <span className="theme-toggle-track">
+        <span className="theme-toggle-thumb" />
+      </span>
+      <span className="theme-toggle-status">
+        {isDarkMode ? "ON" : "OFF"}
+      </span>
+    </button>
+  </nav>
+</header>
 
       {/* HERO */}
       <section className="hero" id="home">
